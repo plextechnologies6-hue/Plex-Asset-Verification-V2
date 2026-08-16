@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Plex Asset Verification{% endblock %}</title>
+<link rel="icon" href="{{ url_for('static', filename='plex-logo.png') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="{{ url_for('dashboard') }}">
+    <img src="{{ url_for('static', filename='plex-logo.png') }}" alt="Plex Technologies">
+    <span><b>Plex Technologies</b><small>Asset Verification & FAR Reconciliation</small></span>
+  </a>
+  <nav>
+    <a href="{{ url_for('dashboard') }}">Dashboard</a>
+    <a href="{{ url_for('clients') }}">Clients</a>
+    <a href="{{ url_for('new_session') }}">New Session</a>
+  </nav>
+</header>
+<main class="container">
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% for cat,msg in messages %}<div class="flash {{cat}}">{{msg}}</div>{% endfor %}
+{% endwith %}
+{% block content %}{% endblock %}
+</main>
+<footer>Plex Technologies Limited • Asset Verification Platform V2</footer>
+</body>
+</html>
